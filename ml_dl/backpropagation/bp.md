@@ -54,6 +54,7 @@ $$\begin{align}
 ```
 当j不等于k时，a(k)对z(j)偏导为0
 ```
+
 + *3.2 The second equation*
 $$\begin{align}
 \delta^l_j &= \frac{\partial C}{\partial z^l_j} \\
@@ -70,6 +71,7 @@ $$\begin{align}
 \frac{\partial z^l_j}{\partial b^l_j} = \frac{\partial C}{\partial z^l_j} \cdot 1
 = \delta^l_j
 \end{align}$$
+
 + *3.4 The fourth equation*
 $$\begin{align}
 \frac{\partial C}{\partial w^l_{jk}} &= \frac{\partial C}{\partial z^l_j} \cdot
