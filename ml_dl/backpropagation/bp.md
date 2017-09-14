@@ -78,3 +78,5 @@ $$\begin{align}
 &= \delta^l_j \cdot \frac{\partial (\sum_k a^{l-1}_k w^l_{jk}+b^l_j)}{\partial w^l_{jk}} \\
 &= \delta^l_j a^{l-1}_k
 \end{align}$$
+
+### Reference
