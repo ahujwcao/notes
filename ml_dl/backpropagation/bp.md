@@ -56,6 +56,7 @@ $$\begin{align}
 ```
 
 + *3.2 The second equation*
+
 $$\begin{align}
 \delta^l_j &= \frac{\partial C}{\partial z^l_j} \\
 &= \frac{\partial C}{\partial a^l_j} \cdot \frac{\partial a^l_j}{\partial z^l_j} \\
@@ -66,6 +67,7 @@ $$\begin{align}
 \end{align}$$
 
 + *3.3 The third equation*
+
 $$\begin{align}
 \frac{\partial C}{\partial b^l_j} &= \frac{\partial C}{\partial z^l_j} \cdot
 \frac{\partial z^l_j}{\partial b^l_j} = \frac{\partial C}{\partial z^l_j} \cdot 1
