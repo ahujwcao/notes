@@ -148,8 +148,14 @@ $$\begin{align}\frac{\partial J}{\partial \boldsymbol w_j}
 
 + ### *probabilistic interpretation*
 Assume y satisfies Bernoulli distribution
-$$\begin{align}P(y=1|\boldsymbol x) &= \hat{y} \\ P(y=0|\boldsymbol x) &= 1- \hat{y} \\
-\Rightarrow p(y|x;w) &= \hat{y}^y (1-\hat{y})^{1-y}\end{align}$$
+$$\begin{align}P(y=1|\boldsymbol x) &= \hat{y} \\
+P(y=0|\boldsymbol x) &= 1- \hat{y}\end{align}$$
+
+$$\Rightarrow p(y|x;w) = \hat{y}^y (1-\hat{y})^{1-y} \tag 1$$
+
+```
+将y=1带入(1)式得p(y|x)=h(x),将y=0带入(1)式得p(y|x)=1-h(x)
+```
 
 $$L(\boldsymbol w) = p(\boldsymbol y|\boldsymbol X;\boldsymbol w)=\prod_{i=1}^m p(\boldsymbol y^{(i)}|\boldsymbol x^{(i)};\boldsymbol w)$$
 
