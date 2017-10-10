@@ -22,7 +22,7 @@ typedef struct
 
 Status InitList(SqList *l)
 {
-    l->elem = (ElemType *)malloc(sizeof(int)*LIST_INIT_SIZE);
+    l->elem = (ElemType *)malloc(sizeof(ElemType)*LIST_INIT_SIZE);
     if (!l->elem) {
       exit(OVERFLOW);
     }
@@ -46,7 +46,7 @@ Status ListInsert(SqList *l, int i, ElemType e)
   if (l->length>=l->list_size) {
     ElemType *newbase = (ElemType *) realloc(l->elem, l->list_size+LIST_INCREMENT*sizeof(ElemType));
     if (!newbase) {
-      exist(OVERFLOW);
+      exit(OVERFLOW);
     }
     l->elem = newbase;
     l->list_size += LIST_INCREMENT;
@@ -73,13 +73,17 @@ Status ListDelete(SqList *l, int i, ElemType *e)
     *p = *(p+1);
   }
   --l->length;
+  return OK;
 }
 
 
-Status ListTraverse(SqList *l, void (*vist)(ElemType *e))
+void ListTraverse(SqList *l, void (*vist)(ElemType *e))
 {
-
+  for(int i=0;i<l->length;i++) {
+    vist(l->elem + i);
+  }
 }
+
 
 Status ListEmpty(SqList *l)
 {
@@ -90,7 +94,7 @@ Status ListEmpty(SqList *l)
   }
 }
 
-Status ClearList(SqList *l)
+void ClearList(SqList *l)
 {
   l->length = 0;
 }
@@ -100,8 +104,21 @@ int ListLength(SqList *l)
   return l->length;
 }
 
+void Display(ElemType *e)
+{
+  printf("%d ",*e);
+}
 
 int main()
 {
+  SqList l;
+  InitList(&l);
+  for(int i=0;i<5;i++) {
+    ListInsert(&l, i+1, i);
+  }
+  ElemType *e;
+  ListDelete(&l, 3, e);
+  e = NULL;
+  ListTraverse(&l, &Display);
 
 }
