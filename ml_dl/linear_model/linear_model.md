@@ -9,7 +9,9 @@ $$\hat{y_i} = wx_i+b$$
 
 $$J\left(w,b\right) = \frac{1}{m}\sum_{i=1}^m\left(\hat{y_i}-y_i \right)^2$$
 
-$$\left(w^*,b^*\right) = \underset{(w,b)}{\operatorname{arg min}}J\left(w,b\right)$$
+$$\left(w^*,b^*\right) = \underset{(w,b)}{\operatorname{arg min}}J\left(w,b \right)$$
+
+$$\boldsymbol z^l =\boldsymbol w^l\boldsymbol a^{l-1} + \boldsymbol b^l$$
 
 + ### *parameter estimation*
 $$\begin{align}
