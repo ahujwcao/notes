@@ -1,4 +1,15 @@
-## Some Basic Grammar
+---
+title: Some Python Grammar
+date: 2018-02-26 16:57:33
+categories:
+- 技术
+- Python
+tags:
+- python
+---
+
+# Some Basic Grammar
+
 ---
 ### 1.Built-In Types and Data Structures
 

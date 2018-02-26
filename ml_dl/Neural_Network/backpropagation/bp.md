@@ -1,4 +1,16 @@
+---
+title: Derive backpropagation
+date: 2018-02-26 16:52:33
+categories:
+- 机器学习
+- 神经网络
+tags:
+- 反向传播
+---
+
 ### Derive backpropagation
+
+----
 
 ### 1 Forward Propagation
 
