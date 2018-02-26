@@ -1,3 +1,15 @@
+---
+title: LinearModel
+date: 2018-02-23 13:50:21
+categories:
+- 机器学习
+tags:
+- 线性回归
+- 逻辑回归
+- 线性模型
+- 最大似然估计
+---
+
 # Linear Model
 
 ----
@@ -185,3 +197,4 @@ These broader family of models Generalized Linear Models，其中函数$g(\cdot)
 [2] 周志华，《机器学习》，清华大学出版社
 
 [3] Ian Goodfellow and Yoshua Bengio and Aaron Courville, "Deep Learning"
+
