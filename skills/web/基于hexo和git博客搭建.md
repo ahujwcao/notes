@@ -7,7 +7,7 @@ categories:
 tags:
 - Web
 - hexo
-- git
+- Git
 ---
 
 # 基于hexo和git的博客搭建
