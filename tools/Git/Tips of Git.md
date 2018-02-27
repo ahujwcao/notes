@@ -23,7 +23,6 @@ $ rm -rf .git/modules/the_submodule
 + ### ignore 
 
 ```bash
+$ echo "sub_repo/" >> .gitignore
 $ git clone https://user@bitbucket.org/user/repo.git sub_repo
-$ git add sub_repo
-$ echo "sub_repo" >> .gitignore
 ```
