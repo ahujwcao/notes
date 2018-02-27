@@ -20,7 +20,7 @@ $ git rm the_submodule
 $ rm -rf .git/modules/the_submodule
 ```
 
-+ ### ignore 
++ ### ignore submodule
 
 ```bash
 $ echo "sub_repo/" >> .gitignore
