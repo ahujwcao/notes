@@ -54,9 +54,19 @@ ldconfig
 ```
 # Issues #
 
++ ### *nvidia driver install*
+
+1. 登录管理器循环登录问题
+
+```
+bios 安全登录问题
+#./NVIDIA-xxx.run -no-x-check -no-nouveau-check -no-opengl-files
+```
+
 + ### *cuda install*
 
 1. Can't locate InstallUtils.pm in @INC
 ```
 export PERL5LIB=.
 ```
+
