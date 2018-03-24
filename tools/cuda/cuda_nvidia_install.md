@@ -27,22 +27,18 @@ apt install lib32z1 lib32ncurses5
 
 ```sh
 blacklist nouveau
-blacklist lbm-nouveau
 options nouveau modeset=0
-alias nouveau off
-alias lbm-nouveau off
 ```
-+ disable module
++ update module
 
 ```sh
-echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf
 update-initramfs -u
 ```
 - 1.3 ***execute installer***
 
 ```sh
 service lightdm stop / service gdm3 stop
-sh NVIDIA-Linux-x86_64-XX.run
+sh NVIDIA-Linux-x86_64-XX.run -no-opengl-files
 ```
 
 ### 2. Install cuda/cudnn
@@ -59,9 +55,9 @@ ldconfig
 1. 登录管理器循环登录问题
 
 ```
-bios 安全登录问题
-#./NVIDIA-xxx.run -no-x-check -no-nouveau-check -no-opengl-files
-```
+(1) bios 安全登录问题
+(2) #./NVIDIA-xxx.run -no-x-check -no-nouveau-check -no-opengl-files
+``` 
 
 + ### *cuda install*
 
