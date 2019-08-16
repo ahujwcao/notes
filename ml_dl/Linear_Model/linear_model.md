@@ -10,94 +10,92 @@ tags:
 - 最大似然估计
 ---
 
-# Linear Model
+## Linear Model
 
-----
+### 1. Linear Regression
 
-+ ## 1. Linear Regression
+- ### 1.1. Simple Linear Regression
 
-    - ### 1.1. Simple Linear Regression
+  - *model formulation*
 
-        + ### *model formulation*        
-        
-        $$\hat{y_i} = wx_i+b$$
-        $$J\left(w,b\right) = \frac{1}{m}\sum_{i=1}^m\left(\hat{y_i}-y_i \right)^2$$
+    $$\hat{y_i} = wx_i+b$$
+    $$J\left(w,b\right) = \frac{1}{m} \sum_{i=1}^m \left( \hat{y_i} - y_i  \right) ^2$$
 
-        + ### *parameter estimation*
-        
-        $$\left(w^*,b^*\right) = \underset{(w,b)}{\operatorname{arg min}}J\left(w,b \right)$$
+  - *parameter estimation*
 
-        + ### *closed-form solution*
+    $$\left( w^*, b^* \right) = \underset{(w,b)}{\operatorname{arg min}}J \left(w, b \right)$$
 
-        $$\begin{align}
-        \frac{\partial J}{\partial w}
-        &= \frac{2}{m} \sum_i \left(\hat{y_i}-y_i\right)
-            \frac{\partial}{\partial w} \left(\hat{y_i}-y_i\right)
-        = \frac{2}{m} \sum_i \left(\hat{y_i}-y_i\right)x_i \\
-        \frac{\partial J}{\partial b}
-        &= \frac{2}{m} \sum_i \left(\hat{y_i}-y_i\right)
-            \frac{\partial}{\partial b} \left(\hat{y_i} - y_i\right)
-        = \frac{2}{m} \sum_i \left(\hat{y_i} - y_i\right)
-        \end{align}$$
-        
-        $$\begin{align}
-        w^* &= \frac{\sum{y_i(x_i-x)}}{\sum{x_i^2} -\frac{1}{m}\left(\sum{x_i}\right)^2} \\
+  - *closed-form solution*
+
+    $$\begin{align}
+    \frac{\partial J}{\partial w}
+    &= \frac{2}{m} \sum_i \left(\hat{y_i}-y_i\right)
+          \frac{\partial}{\partial w} \left(\hat{y_i}-y_i\right)
+    = \frac{2}{m} \sum_i \left( \hat{y_i} - y_i \right) x_i \\
+    \frac{\partial J}{\partial b}
+    &= \frac{2}{m} \sum_i \left( \hat{y_i} - y_i \right)
+          \frac{\partial}{\partial b} \left( \hat{y_i} - y_i \right)
+    = \frac{2}{m} \sum_i \left( \hat{y_i} - y_i \right)
+    \end{align}$$
+
+    $$\begin{align}
+    w^* &= \frac{ \sum{y_i(x_i - \bar{x})}}{\sum{x_i^2}  - \frac{1}{m} \left( \sum{x_i} \right)^2} \\
         b^* &= \frac{1}{m} \sum_{i=1}^m{(y_i-wx_i)}
+    \end{align}$$
+
+- ### 1.2 Multiple Linear Regression
+
+  - *model formulation*
+
+    $$\boldsymbol w=(\boldsymbol{w}; b) \qquad
+    \boldsymbol{X}
+    =\left(\begin{matrix}
+    \boldsymbol{x_1^T}&1\\
+    \boldsymbol{x_2^T}&1\\
+    \vdots \\
+    \boldsymbol{x_m^T}&1\\
+    \end{matrix} \right)$$
+
+    $$ \boldsymbol{\hat{y}} = \boldsymbol{Xw}
+    =\left(
+    \begin{array}{c}
+    \hat{y_1}\\
+    \hat{y_2}\\
+    \vdots \\
+    \hat{y_m}\\
+    \end{array}\right)\qquad
+    \hat{\boldsymbol y}^{(i)} = \boldsymbol w^T \boldsymbol x^{(i)}$$
+
+    $$J\left(\boldsymbol{w}\right)  = \frac{1}{m} \sum_{i=1}^m
+    \left( \hat{\boldsymbol y}^{(i)} - \boldsymbol y^{(i)} \right)^2
+    =\frac{1}{m} \left\| \boldsymbol{\hat{y} - y} \right\|^2 \\
+    =\frac{1}{m} \left( \boldsymbol{Xw - y} \right)^T \left(\boldsymbol{Xw - y}\right)
+    \quad \mapsto [MSE_{train}]$$
+    $$\boldsymbol{w}^* = \underset{\boldsymbol{w}}{\operatorname{arg min}}
+    J\left(\boldsymbol{w}\right)$$
+
+    ```
+    度量模型性能的一种方法是计算在测试集上的均方误差MSE,为了减小MSE，一种直观方式是最小化训练集上的均方误差
+    ```
+    + ### *parameter estimation*
+        
+        * Normal Equation
+
+        $$\nabla_\boldsymbol{w}J(\boldsymbol{w})=0 \Rightarrow
+        \nabla_\boldsymbol{w}\left(\boldsymbol{Xw-y}\right)^T\left(\boldsymbol{Xw-y}\right) = 0\\
+        \Rightarrow \boldsymbol{w^*=\left( X^TX \right)^{-1}X^Ty}$$
+
+        ```
+        在这里需要样本数大于特征维度数，即X行数大于列数
+        ```
+        
+        * Gradient Descent
+
+        $$\begin{align}
+        \frac{\partial J}{\partial \boldsymbol w_j}
+        &= \frac{\partial}{\partial w_j} \left(\frac{1}{m} \sum_{i=1}^m \left(\hat{y_i}-y_i \right)^2\right) \\
+        &= \frac{1}{m} \sum_{i=1}^m \left(\hat{\boldsymbol y}^{(i)} -\boldsymbol y^{(i)}\right)\boldsymbol x_j^{(i)}
         \end{align}$$
-
-    - ### 1.2 Multiple Linear Regression
-        
-        + ### *model formulation*
-        
-        $$\boldsymbol w=(\boldsymbol{w};b) \qquad
-        \boldsymbol{X}
-        =\left(\begin{matrix}
-        \boldsymbol{x_1^T}&1\\
-        \boldsymbol{x_2^T}&1\\
-        \vdots \\
-        \boldsymbol{x_m^T}&1\\
-        \end{matrix} \right)$$
-
-        $$ \boldsymbol{\hat{y}} = \boldsymbol{Xw}
-        =\left(
-        \begin{array}{c}
-        \hat{y_1}\\
-        \hat{y_2}\\
-        \vdots \\
-        \hat{y_m}\\
-        \end{array}\right)\qquad
-        \hat{\boldsymbol y}^{(i)} = \boldsymbol w^T \boldsymbol x^{(i)}$$
-
-        $$J\left(\boldsymbol{w}\right)  = \frac{1}{m} \sum_{i=1}^m
-        \left( \hat{\boldsymbol y}^{(i)} - \boldsymbol y^{(i)} \right)^2
-        =\frac{1}{m} \left\| \boldsymbol{\hat{y} - y} \right\|^2 \\
-        =\frac{1}{m} \left( \boldsymbol{Xw - y} \right)^T \left(\boldsymbol{Xw - y}\right)
-        \quad \mapsto [MSE_{train}]$$
-        $$\boldsymbol{w}^* = \underset{\boldsymbol{w}}{\operatorname{arg min}}
-        J\left(\boldsymbol{w}\right)$$
-        
-        ```
-        度量模型性能的一种方法是计算在测试集上的均方误差MSE,为了减小MSE，一种直观方式是最小化训练集上的均方误差
-        ```
-        + ### *parameter estimation*
-            
-            * Normal Equation
-
-            $$\nabla_\boldsymbol{w}J(\boldsymbol{w})=0 \Rightarrow
-            \nabla_\boldsymbol{w}\left(\boldsymbol{Xw-y}\right)^T\left(\boldsymbol{Xw-y}\right) = 0\\
-            \Rightarrow \boldsymbol{w^*=\left( X^TX \right)^{-1}X^Ty}$$
-
-            ```
-            在这里需要样本数大于特征维度数，即X行数大于列数
-            ```
-            
-            * Gradient Descent
-
-            $$\begin{align}
-            \frac{\partial J}{\partial \boldsymbol w_j}
-            &= \frac{\partial}{\partial w_j} \left(\frac{1}{m} \sum_{i=1}^m \left(\hat{y_i}-y_i \right)^2\right) \\
-            &= \frac{1}{m} \sum_{i=1}^m \left(\hat{\boldsymbol y}^{(i)} -\boldsymbol y^{(i)}\right)\boldsymbol x_j^{(i)}
-            \end{align}$$
 
     - ### 1.3 Probabilistic interpretation for cost function
 
@@ -197,4 +195,3 @@ These broader family of models Generalized Linear Models，其中函数$g(\cdot)
 [2] 周志华，《机器学习》，清华大学出版社
 
 [3] Ian Goodfellow and Yoshua Bengio and Aaron Courville, "Deep Learning"
-
