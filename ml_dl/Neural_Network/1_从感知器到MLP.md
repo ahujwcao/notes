@@ -1,11 +1,13 @@
 ---
-title: Derive backpropagation
+title: 
 date: 2018-02-26 16:52:33
 categories:
 - 机器学习
 - 神经网络
 tags:
 - 反向传播
+- 
+mathjax: true
 ---
 
 ### Derive backpropagation
@@ -13,10 +15,6 @@ tags:
 ----
 
 ### 1 Forward Propagation
-
-<div align=center>
-<img src="imgs/img1.png"/>
-</div>
 
 $$\boldsymbol a^l = \sigma(\boldsymbol z^l)$$
 
@@ -29,14 +27,13 @@ $$a_j^l = \sigma(z_j^l)$$
 $$z_j^l =\sum_k w_{jk}^la_k^{l-1} + b_j^l$$
 
 ### 2 Backward Propagation
-<div align=center>
-<img src="imgs/img2.png"/>
-</div>
 
 $$ \delta^l_j \equiv \frac{\partial C}{\partial z^l_j}$$
+
 ```
 delta衡量的是对神经元输出激励值的误差
 ```
+
 $$\boldsymbol \delta^L
 = \frac{\partial C}{\partial \boldsymbol a^L} \odot \sigma'(\boldsymbol z^L)
 = \nabla_a C  \odot \sigma'(\boldsymbol z^L) \tag{1} $$
@@ -50,9 +47,7 @@ $$\frac{\partial C}{\partial w^l_{jk}} = \delta^l_j a^{l-1}_k \tag{4}$$
 ```
 a(in)是输⼊给权重w的神经元的激活值，δ(out)是输出⾃权重w的神经元的误差，那么代价函数对参数w的偏导如下：
 ```
-<div align=center>
-<img src="imgs/img3.png"/>
-</div>
+
 
 ### 3 Proof and Derivation
 + *3.1 The first equation*
