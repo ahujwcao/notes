@@ -1,16 +1,16 @@
 ---
-title: 
+title: 从感知器到MLP
 date: 2018-02-26 16:52:33
 categories:
 - 机器学习
 - 神经网络
 tags:
+- 感知器
 - 反向传播
-- 
-mathjax: true
+- Delta准则
 ---
 
-### Derive backpropagation
+## 从感知器到MLP
 
 ----
 
