@@ -8,7 +8,7 @@ tags:
 - nvidia
 ---
 
-#cuda及nvidia驱动安装
+# cuda及nvidia驱动安装
 
 ---
 ### 1. Install nvidia driver

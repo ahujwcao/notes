@@ -74,22 +74,23 @@ tags:
     $$\boldsymbol{w}^* = \underset{\boldsymbol{w}}{\operatorname{arg min}}
     J\left(\boldsymbol{w}\right)$$
 
-    ```
+    ```bash
     度量模型性能的一种方法是计算在测试集上的均方误差MSE,为了减小MSE，一种直观方式是最小化训练集上的均方误差
     ```
-    + ### *parameter estimation*
-        
-        * Normal Equation
+
+  - *parameter estimation*
+
+    - Normal Equation
 
         $$\nabla_\boldsymbol{w}J(\boldsymbol{w})=0 \Rightarrow
         \nabla_\boldsymbol{w}\left(\boldsymbol{Xw-y}\right)^T\left(\boldsymbol{Xw-y}\right) = 0\\
         \Rightarrow \boldsymbol{w^*=\left( X^TX \right)^{-1}X^Ty}$$
 
-        ```
+        ```bash
         在这里需要样本数大于特征维度数，即X行数大于列数
         ```
-        
-        * Gradient Descent
+
+    - Gradient Descent
 
         $$\begin{align}
         \frac{\partial J}{\partial \boldsymbol w_j}
@@ -97,35 +98,37 @@ tags:
         &= \frac{1}{m} \sum_{i=1}^m \left(\hat{\boldsymbol y}^{(i)} -\boldsymbol y^{(i)}\right)\boldsymbol x_j^{(i)}
         \end{align}$$
 
-    - ### 1.3 Probabilistic interpretation for cost function
+- ### 1.3 Probabilistic interpretation for cost function
 
-        $\boldsymbol y^{(i)} = \boldsymbol\theta^T \boldsymbol x^{(i)} + \boldsymbol\epsilon^{(i)}$ ,assume $\boldsymbol\epsilon^{(i)} \thicksim  \mathcal{N}(0,\sigma^2)$ and are distributed IID
+    $\boldsymbol y^{(i)} = \boldsymbol\theta^T \boldsymbol x^{(i)} + \boldsymbol\epsilon^{(i)}$ ,assume $\boldsymbol\epsilon^{(i)} \thicksim  \mathcal{N}(0,\sigma^2)$ and are distributed IID
 
-        $$ p(\boldsymbol\epsilon^{(i)}) = \frac{1}{\sqrt{2\pi}\sigma} exp \left( -\frac{(\boldsymbol\epsilon^{(i)})^2}{2\sigma^2} \right)$$
+    $$ p(\boldsymbol\epsilon^{(i)}) = \frac{1}{\sqrt{2\pi}\sigma} exp \left( -\frac{(\boldsymbol\epsilon^{(i)})^2}{2\sigma^2} \right)$$
 
-        for given $x^{(i)}$ and $\theta$
+    for given $x^{(i)}$ and $\theta$
 
-        $$p(y_i|x_i;\theta)=\frac{1}{\sqrt{2\pi}\sigma}
-        exp \left( -\frac{\left(\boldsymbol y^{(i)} - \boldsymbol\theta^T \boldsymbol x^{(i)} \right)^2}{2\sigma^2} \right)$$
+    $$p(y_i|x_i;\theta)=\frac{1}{\sqrt{2\pi}\sigma}
+    exp \left( -\frac{\left(\boldsymbol y^{(i)} - \boldsymbol\theta^T \boldsymbol x^{(i)} \right)^2}{2\sigma^2} \right)$$
 
-        $$L(\boldsymbol \theta)=L(\boldsymbol \theta;\boldsymbol X,\boldsymbol y)=p(\boldsymbol y|\boldsymbol X;\boldsymbol \theta)=
-        =\prod_{i=1}^m p(\boldsymbol y^{(i)}|\boldsymbol x^{(i)};\boldsymbol\theta)$$
+    $$L(\boldsymbol \theta)=L(\boldsymbol \theta;\boldsymbol X,\boldsymbol y)=p(\boldsymbol y|\boldsymbol X;\boldsymbol \theta)=
+    =\prod_{i=1}^m p(\boldsymbol y^{(i)}|\boldsymbol x^{(i)};\boldsymbol\theta)$$
 
-        ```
-        似然函数(likelihood fuction),L(θ)表示在概率密度函数的参数是θ时，得到这组样本的概率
-        ```
-        $$\boldsymbol \theta_{ML} = \underset{\boldsymbol \theta}{\operatorname{arg max}}L(\boldsymbol \theta) = \underset{\boldsymbol \theta}{\operatorname{arg max}} \log L(\boldsymbol \theta)\\
-        \ell(\boldsymbol\theta) = \log L(\boldsymbol \theta) = \sum_{i=1}^m\log p(\boldsymbol y^{(i)}|\boldsymbol x^{(i)};\boldsymbol\theta)\\ =\sum \left(\ln \frac{1}{\sqrt{2\pi}\sigma} - \frac{\left(\boldsymbol y^{(i)} - \boldsymbol\theta^T \boldsymbol x^{(i)} \right)^2}{2\sigma^2}\right)\\
-        =m \ln \frac{1}{\sqrt{2\pi}\sigma} - \frac{1}{2\sigma^2} \sum_{i=1}^m \left(\hat{\boldsymbol y}^{(i)} -\boldsymbol y^{(i)}\right)^2
-        $$
+    ```bash
+    似然函数(likelihood fuction),L(θ)表示在概率密度函数的参数是θ时，得到这组样本的概率
+    ```
 
-        $$\operatorname{arg max}\ell(\boldsymbol \theta) \Rightarrow \operatorname{arg min}\left\| \boldsymbol{\hat{y} - y} \right\|^2$$
+    $$\boldsymbol \theta_{ML} = \underset{\boldsymbol \theta}{\operatorname{arg max}}L(\boldsymbol \theta) = \underset{\boldsymbol \theta}{\operatorname{arg max}} \log L(\boldsymbol \theta)\\
+    \ell(\boldsymbol\theta) = \log L(\boldsymbol \theta) = \sum_{i=1}^m\log p(\boldsymbol y^{(i)}|\boldsymbol x^{(i)};\boldsymbol\theta)\\ =\sum \left(\ln \frac{1}{\sqrt{2\pi}\sigma} - \frac{\left(\boldsymbol y^{(i)} - \boldsymbol\theta^T \boldsymbol x^{(i)} \right)^2}{2\sigma^2}\right)\\
+    =m \ln \frac{1}{\sqrt{2\pi}\sigma} - \frac{1}{2\sigma^2} \sum_{i=1}^m \left(\hat{\boldsymbol y}^{(i)} -\boldsymbol y^{(i)}\right)^2
+    $$
 
-        ```
-        最大化关于w的对数似然和最小化均方误差会得到相同的参数估计
-        ```
+    $$\operatorname{arg max}\ell(\boldsymbol \theta) \Rightarrow \operatorname{arg min}\left\| \boldsymbol{\hat{y} - y} \right\|^2$$
 
-+ ## 2. Generalized Linear Models
+    ```bash
+    最大化关于w的对数似然和最小化均方误差会得到相同的参数估计
+    ```
+
+## 2. Generalized Linear Models
+
 For a monotonic and differentiable function $g(\cdot)$
 $$y=g^{-1}(\boldsymbol w^T \boldsymbol x+b)$$
 These broader family of models Generalized Linear Models，其中函数$g(\cdot)$称为”联系函数”（link function）
@@ -186,9 +189,9 @@ These broader family of models Generalized Linear Models，其中函数$g(\cdot)
 
     $$\ell(\boldsymbol w)=\log L(\boldsymbol w)=\sum_{i=1}^m y^{(i)}\log \hat{y}^{(i)} + (1-y^{(i)})\log (1-\hat{y}^{(i)}) \\ \Rightarrow J(\boldsymbol w) = -\ell(\boldsymbol w)\quad \arg \min J(\boldsymbol w) \Rightarrow \arg \max \ell(\boldsymbol w)$$
 
-+ ## 4. LDA
+## 4. LDA
 
-+ ## 5. Reference
+## 5. Reference
 
 [1] Andrew Ng, Machine Learning, https://www.coursera.org/learn/machine-learning/
 
