@@ -43,6 +43,13 @@ tags:
         b^* &= \frac{1}{m} \sum_{i=1}^m{(y_i-wx_i)}
     \end{align}$$
 
+    ```math
+    \begin{align}
+    w^* &= \frac{ \sum{y_i(x_i - \bar{x})}}{\sum{x_i^2}  - \frac{1}{m} \left( \sum{x_i} \right)^2} \\
+        b^* &= \frac{1}{m} \sum_{i=1}^m{(y_i-wx_i)}
+    \end{align}
+    ```
+
 - ### 1.2 Multiple Linear Regression
 
   - *model formulation*
