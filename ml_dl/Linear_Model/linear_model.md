@@ -16,6 +16,10 @@ tags:
 
 - ### 1.1. Simple Linear Regression
 
+  ```math
+    a = a_i
+  ```
+
   - *model formulation*
 
     $$\hat{y_i} = wx_i+b$$
@@ -27,7 +31,8 @@ tags:
 
   - *closed-form solution*
 
-    $$\begin{align}
+    ```math
+    \begin{aligned}
     \frac{\partial J}{\partial w}
     &= \frac{2}{m} \sum_i \left(\hat{y_i}-y_i\right)
           \frac{\partial}{\partial w} \left(\hat{y_i}-y_i\right)
@@ -36,7 +41,8 @@ tags:
     &= \frac{2}{m} \sum_i \left( \hat{y_i} - y_i \right)
           \frac{\partial}{\partial b} \left( \hat{y_i} - y_i \right)
     = \frac{2}{m} \sum_i \left( \hat{y_i} - y_i \right)
-    \end{align}$$
+    \end{aligned}
+    ```
 
     $$\begin{align}
     w^* &= \frac{ \sum{y_i(x_i - \bar{x})}}{\sum{x_i^2}  - \frac{1}{m} \left( \sum{x_i} \right)^2} \\
@@ -44,6 +50,7 @@ tags:
     \end{align}$$
 
     ```math
+    a = a_i
     \begin{align}
     w^* &= \frac{ \sum{y_i(x_i - \bar{x})}}{\sum{x_i^2}  - \frac{1}{m} \left( \sum{x_i} \right)^2} \\
         b^* &= \frac{1}{m} \sum_{i=1}^m{(y_i-wx_i)}
